@@ -5,6 +5,8 @@
 (function ( $ ) {
 
 	$.widget('sdy.point3D', { 
+		defaultElement:  null,
+
 		options: {
 			point: {
 				x: 1,
@@ -231,7 +233,7 @@
 				z: -1
 			};
 
-			this.options.point3D.bind("point3Dchange", function(event, data) {
+			this.options.point3D.bind("point3dchange", function(event, data) {
 				viewer._setValuesFromPoint3D();
 				viewer._update();
 			});
@@ -618,7 +620,7 @@
 		},
 
 		_setValuesFromPoint3D: function() {
-			if(this.ignoreNextUpdate) // don't listen to update initiate by yourself!
+			if(this.ignoreNextUpdate) // don't listen to update initiated by yourself!
 				this.ignoreNextUpdate = false;
 			else {
 				this.axis(this.options.point3DMap.x, this.getAbsoluteValueForAxis(this.options.point3DMap.x, this.options.point3D.point3D('x')));
